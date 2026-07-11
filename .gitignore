@@ -23,3 +23,9 @@ reports/*
 
 .env
 .DS_Store
+
+# Claude Code session state: ephemeral worktrees and personal/local settings.
+# .claude/settings.json (team-shared config, if ever added) is intentionally
+# NOT excluded here.
+.claude/worktrees/
+.claude/settings.local.json

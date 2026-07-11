@@ -90,3 +90,11 @@ Real ERCOT battery fleets concentrate at HB_WEST (wind-congestion negative prici
 HB_HOUSTON (CenterPoint transmission congestion, coastal load growth). HB_HOUSTON is used
 as the default settlement point here — volatile enough to produce a real arbitrage signal,
 while being a recognizable industry benchmark hub. Fully configurable to any hub or node.
+See [ADR 0005](docs/adr/0005-default-settlement-point.md) for the full reasoning.
+
+## Docs
+
+- [`docs/adr/`](docs/adr/) — architecture decision records: what was decided, why, and
+  what it costs.
+- [`docs/milestones/`](docs/milestones/) — a write-up per milestone: what was built, what
+  was found along the way, and how it was validated.
