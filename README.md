@@ -25,6 +25,11 @@ exact-duplicate rows for Load Zone locations (never Trading Hub locations, so
 HB_HOUSTON is unaffected), occasionally with penny-level discrepancies between the
 two — resolved deterministically via mean aggregation at the silver layer.
 
+**[View the M1 showcase notebook](notebooks/01_m1_data_showcase.ipynb)** — DAM vs RTM
+price charts, AS clearing prices, system load, the actual DQ check results, and a rough
+(deliberately naive, not the real M2 optimizer) sense of how much arbitrage spread is
+in the data.
+
 ## What this is
 
 - Pulls real ERCOT Day-Ahead Market (DAM), Real-Time Market (RTM), and Ancillary Services
@@ -64,8 +69,9 @@ ingest (gridstatus) → silver (Polars, typed/cleaned) → gold (analysis marts,
 ```bash
 uv sync
 uv run ercot-bess ingest --start 2025-06-01 --end 2025-06-30 --hub HB_HOUSTON
-uv run ercot-bess transform
+uv run ercot-bess transform --start 2025-06-01 --end 2025-06-30
 uv run pytest
+uv run jupyter lab notebooks/01_m1_data_showcase.ipynb
 ```
 
 (Optimize/backtest/report commands land in later milestones.)
@@ -82,6 +88,7 @@ src/ercot_bess/
 ├── backtest/   # walk-forward engine, settlement calc, revenue attribution
 ├── report/     # report generation, plots, % of perfect revenue tables
 └── cli.py
+notebooks/      # exploratory/showcase notebooks, one per milestone's worth of proof
 ```
 
 ## Why HB_HOUSTON
