@@ -6,6 +6,20 @@ evaluates a battery optimizer — **% of perfect-foresight revenue captured**.
 
 > Status: M2 (perfect foresight) complete. This README will grow with each milestone.
 
+## Milestones
+
+| # | Milestone | Status | Write-up |
+|---|---|---|---|
+| M1 | Skeleton + ingestion — repo scaffold, `gridstatus` ingestion, silver tables in DuckDB, DQ checks | ✅ Done | [docs/milestones/M1-skeleton-ingestion.md](docs/milestones/M1-skeleton-ingestion.md) |
+| M2 | Perfect foresight — battery model + LP benchmark, golden-case tests, first revenue numbers | ✅ Done | [docs/milestones/M2-perfect-foresight.md](docs/milestones/M2-perfect-foresight.md) |
+| M3 | Causal strategies + walk-forward engine — DA-committed and rolling-horizon MPC strategies vs. perfect foresight, no-lookahead structurally enforced, invariant tests | ⬜ Planned | — |
+| M4 | Full history + RTC+B analysis — extend ingestion to 2025-06 → present, tag every interval by pre/post-RTC+B regime, compare strategy performance and price behavior across the boundary | ⬜ Planned | — |
+| M5 | Polish — HTML report generation, hiring-manager-oriented README pass, one-command reproduction, tag `v0.1.0` | ⬜ Planned | — |
+
+Each milestone ships as its own draft PR, branched fresh from `main` after the previous
+one merges — see the milestone docs above for what was built, decided, and validated at
+each step.
+
 ## M2 status
 
 The perfect-foresight LP benchmark (CVXPY/HiGHS) is running against real M1 data — the
