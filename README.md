@@ -4,7 +4,29 @@ An end-to-end ERCOT battery energy storage system (BESS) dispatch backtester: re
 data in, optimized dispatch strategies out, evaluated the way a trading desk actually
 evaluates a battery optimizer — **% of perfect-foresight revenue captured**.
 
-> Status: M1 (skeleton + ingestion) complete. This README will grow with each milestone.
+> Status: M2 (perfect foresight) complete. This README will grow with each milestone.
+
+## M2 status
+
+The perfect-foresight LP benchmark (CVXPY/HiGHS) is running against real M1 data — the
+revenue ceiling every causal strategy in M3 will be measured against. Three variants,
+June 2025, HB_HOUSTON, default 100MW/200MWh battery:
+
+| Variant | Revenue |
+|---|---|
+| RTM-only (energy arbitrage, 15-min real-time prices) | $371,953 |
+| DAM-only (energy arbitrage, hourly day-ahead prices) | $244,166 |
+| DAM + AS co-optimized | $517,092 |
+
+The DAM+AS number should be read as an optimistic ceiling, not a realistic estimate —
+AS revenue is modeled capacity-only (no deployment energy, no SoC impact from being
+called), which is a deliberate simplifying assumption documented in
+[ADR 0007](docs/adr/0007-as-capacity-only-co-optimization.md).
+
+**[View the M2 showcase notebook](notebooks/02_m2_perfect_foresight_showcase.ipynb)** —
+revenue by variant, the actual dispatch trajectory (charge/discharge/SoC vs. price) for a
+sample week and a single zoomed-in day, AS capacity awards by product, and a comparison
+against M1's naive arbitrage teaser.
 
 ## M1 status
 
@@ -70,11 +92,11 @@ ingest (gridstatus) → silver (Polars, typed/cleaned) → gold (analysis marts,
 uv sync
 uv run ercot-bess ingest --start 2025-06-01 --end 2025-06-30 --hub HB_HOUSTON
 uv run ercot-bess transform --start 2025-06-01 --end 2025-06-30
+uv run ercot-bess optimize --start 2025-06-01 --end 2025-06-30 --hub HB_HOUSTON
 uv run pytest
-uv run jupyter lab notebooks/01_m1_data_showcase.ipynb
 ```
 
-(Optimize/backtest/report commands land in later milestones.)
+(Backtest/report commands land in later milestones.)
 
 ## Repo layout
 
