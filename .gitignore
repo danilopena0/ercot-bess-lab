@@ -23,6 +23,9 @@ reports/*
 
 .env
 .DS_Store
+.idea/
+.ipynb_checkpoints/
+**/.ipynb_checkpoints/
 
 # Claude Code session state: ephemeral worktrees and personal/local settings.
 # .claude/settings.json (team-shared config, if ever added) is intentionally

@@ -6,6 +6,10 @@ evaluates a battery optimizer — **% of perfect-foresight revenue captured**.
 
 > Status: M2 (perfect foresight) complete. This README will grow with each milestone.
 
+**[Project showcase notebook](notebooks/00_project_showcase.ipynb)** — the fastest way
+to see this project end to end: real ERCOT data validated clean, the perfect-foresight
+LP solved live, actual revenue numbers, dispatch charts, and the test suite passing.
+
 ## Milestones
 
 | # | Milestone | Status | Write-up |
